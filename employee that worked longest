@@ -1,0 +1,31 @@
+Question Link - https://leetcode.com/contest/weekly-contest-314/problems/the-employee-that-worked-on-the-longest-task/
+
+class Solution {
+    public int hardestWorker(int n, int[][] logs) {
+        
+        HashMap<Integer,Integer> map = new HashMap<>();
+        
+        int min =Integer.MAX_VALUE;
+        int res = 0;
+        int prev =0;
+        
+        for(int[] curr : logs){
+            
+            map.put(curr[0],Math.max(map.getOrDefault(curr[0],0), curr[1]-prev));
+            prev = curr[1];
+            
+            if(map.get(curr[0])==res){
+                if(curr[0]<min){
+                    res = map.get(curr[0]);
+                    min = curr[0];
+                }
+            }else if(map.get(curr[0]) > res){
+                res = map.get(curr[0]);
+                min = curr[0];
+            }
+            
+        }
+        return min;
+        
+    }
+}
