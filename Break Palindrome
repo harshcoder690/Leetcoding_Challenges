@@ -1,0 +1,24 @@
+Link - https://leetcode.com/problems/break-a-palindrome/
+
+class Solution {
+     public String breakPalindrome(String palindrome) {
+    //either put a at first position applicable from start or put b from last position aplicable            
+         char[] pal = palindrome.toCharArray();
+      
+         for(int i=0;i<pal.length/2;i++){
+             if(pal[i]!='a'){
+             pal[i] = 'a';
+              return String.valueOf(pal);               
+             }             
+         }
+            
+         for(int i=pal.length-1;i>=(pal.length+1)/2;i--){          
+              if(pal[i]!='b'){
+             pal[i] = 'b';
+              return String.valueOf(pal);               
+             }         
+         }
+     
+        return "";        
+     }
+}
